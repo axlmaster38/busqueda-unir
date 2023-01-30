@@ -22,7 +22,7 @@ public class ClienteEntity implements Serializable {
     private static final long SerialVersionUID = 1L;
     @Id
     @GeneratedValue
-    private int id;x
+    private int id;
     @Column(nullable = false, length = 50)
     private String nombre;
     @Column(nullable = false, length = 50)
