@@ -1,9 +1,8 @@
 package com.unir.busquedaunir.services;
 
-import com.unir.busquedaunir.models.Dto.ProductoDto;
-import com.unir.busquedaunir.models.response.ProductoResponse;
-
 import java.util.List;
+
+import com.unir.busquedaunir.models.response.ProductoResponse;
 
 public interface ProductoService {
 

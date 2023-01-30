@@ -1,5 +1,6 @@
 package com.unir.busquedaunir.controllers;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,29 +11,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unir.busquedaunir.entities.CategoriaEntity;
-import com.unir.busquedaunir.models.Dto.CategoriaDto;
-import com.unir.busquedaunir.services.CategoriaServiceImpl;
+import com.unir.busquedaunir.entities.VentaEntity;
+import com.unir.busquedaunir.models.Dto.VentaDto;
+import com.unir.busquedaunir.services.VentaServiceImpl;
 
 @RestController
+@RequestMapping("/venta")
+public class VentaController {
 
-@RequestMapping("/categoria")
-public class CategoriaController {
+    @Autowired
+    private VentaServiceImpl ventaService;
 
-	@Autowired
-	CategoriaServiceImpl categoriaService;
-
-	
-
-	@PostMapping
-    public ResponseEntity<?> getCategoria(@RequestBody CategoriaDto categoriaDto){
+    @PostMapping
+    public ResponseEntity<?> getventa(@RequestBody VentaDto ventaDto){
         String body = "Ingresa algun valor de busqueda";
-        List<CategoriaEntity> categoriaEntities = categoriaService.getCategoria(categoriaDto);
-        if(categoriaEntities != null)
-            return new ResponseEntity<>(categoriaEntities,null, HttpStatus.OK );
+        List<VentaEntity> ventaEntities = ventaService.getVenta(ventaDto);
+        if(ventaEntities != null)
+            return new ResponseEntity<>(ventaEntities,null, HttpStatus.OK );
         else
             return new ResponseEntity<>(body, null, HttpStatus.NO_CONTENT);
     }
 
-	
 }

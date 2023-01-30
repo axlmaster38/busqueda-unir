@@ -11,10 +11,9 @@ import org.springframework.stereotype.Service;
 import com.unir.busquedaunir.entities.CategoriaEntity;
 import com.unir.busquedaunir.entities.ProductoEntity;
 import com.unir.busquedaunir.models.Dto.CategoriaDto;
-import com.unir.busquedaunir.models.Dto.ProductoDto;
+import com.unir.busquedaunir.models.response.ProductoResponse;
 import com.unir.busquedaunir.repositories.CategoriaRepository;
 import com.unir.busquedaunir.repositories.ProductoRepository;
-import com.unir.busquedaunir.models.response.ProductoResponse;
 
 @Service
 public class ProductoServiceImpl implements ProductoService {
@@ -28,7 +27,7 @@ public class ProductoServiceImpl implements ProductoService {
 	@Override
 	public List<ProductoResponse> getProducto(String texto) {
 		texto=texto.toLowerCase();
-		String palabrasclaves[] = { "pollo", "pescado", "chiguiro", "vaca", "lomo", "res", "pechuga" };
+		String palabrasclaves[] = { "pollo", "pescado", "chiguiro", "vaca", "lomo", "res", "pechuga", "leche" };
 		ArrayList<String> listadoBusqueda = new ArrayList<String>();
 
 		for (String clave : palabrasclaves) {

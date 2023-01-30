@@ -1,13 +1,15 @@
 package com.unir.busquedaunir.models.Dto;
 
-import lombok.*;
-
-import javax.persistence.Table;
+import java.io.Serializable;
 
 import com.unir.busquedaunir.models.enums.Estado;
 import com.unir.busquedaunir.models.enums.TipoUnidad;
 
-import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter

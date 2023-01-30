@@ -1,6 +1,5 @@
 package com.unir.busquedaunir.models.response;
 
-import com.unir.busquedaunir.entities.CategoriaEntity;
 import com.unir.busquedaunir.models.Dto.CategoriaDto;
 import com.unir.busquedaunir.models.enums.Estado;
 import com.unir.busquedaunir.models.enums.TipoUnidad;
