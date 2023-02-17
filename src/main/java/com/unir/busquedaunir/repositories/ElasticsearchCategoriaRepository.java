@@ -1,6 +1,6 @@
 package com.unir.busquedaunir.repositories;
 
-import com.unir.busquedaunir.entities.ElasticProducto;
+import com.unir.busquedaunir.entities.ElasticCategoria;
 import lombok.RequiredArgsConstructor;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.MultiMatchQueryBuilder;
@@ -11,34 +11,33 @@ import org.springframework.data.elasticsearch.core.SearchHits;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.query.Query;
 import org.springframework.stereotype.Component;
-import java.util.stream.Collectors;
+
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-public class ElasticsearchRepository {
+public class ElasticsearchCategoriaRepository {
 
     private final String[] nameSearchFields =
             {"nombre.search", "nombre.search._2gram", "nombre.search._3gram"};
 
-    private final ElasticProductoRepository productRepository;
+    private final ElasticCategoriaRepository categoriaRepository;
     private final ElasticsearchOperations elasticClient;
 
-    public ElasticProducto getById(String id) {
-        return productRepository.findById(id).orElse(null);
+    public ElasticCategoria getById(String id) {
+        return categoriaRepository.findById(id).orElse(null);
     }
 
-    public List<ElasticProducto> getAll(){
-        return (List<ElasticProducto>) productRepository.findAll();
+    public Iterable<ElasticCategoria> getAll(){
+        return  categoriaRepository.findAll();
     }
-  /*  public ElasticProducto getByName(String name) {
-        return productRepository.findByName(name).orElse(null);
+  /*  public ElasticCategoria getByName(String name) {
+        return categoriaRepository.findByName(name).orElse(null);
     }*/
 
 
-
-
-    public List<ElasticProducto> searchByName(String namePart) {
+    public List<ElasticCategoria> searchByName(String namePart) {
 
         BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
 
@@ -49,28 +48,44 @@ public class ElasticsearchRepository {
                 new NativeSearchQueryBuilder().withQuery(boolQuery);
         Query query = nativeSearchQueryBuilder.build();
 
-        SearchHits<ElasticProducto> result = elasticClient.search(query, ElasticProducto.class);
+        SearchHits<ElasticCategoria> result = elasticClient.search(query, ElasticCategoria.class);
 
         return result.getSearchHits().stream().map(SearchHit::getContent).collect(Collectors.toList());
     }
 
-    public List<ElasticProducto> searchByCodigo(String codigo) {
+    public List<ElasticCategoria> searchByNombreExacto(String codigo) {
 
         BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
 
-        boolQuery.must(QueryBuilders.matchQuery("codigo", codigo));
+        boolQuery.must(QueryBuilders.matchQuery("nombre", codigo));
 
         NativeSearchQueryBuilder nativeSearchQueryBuilder =
                 new NativeSearchQueryBuilder().withQuery(boolQuery);
         Query query = nativeSearchQueryBuilder.build();
 
-        SearchHits<ElasticProducto> result = elasticClient.search(query, ElasticProducto.class);
+        SearchHits<ElasticCategoria> result = elasticClient.search(query, ElasticCategoria.class);
 
         return result.getSearchHits().stream().map(SearchHit::getContent).collect(Collectors.toList());
     }
 
-    public ElasticProducto saveProduct(ElasticProducto product) {
-        return productRepository.save(product);
+    public List<ElasticCategoria> searchByDescription(String description) {
+
+        BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
+
+        boolQuery.must(QueryBuilders.matchQuery("descripcion", description));
+
+        NativeSearchQueryBuilder nativeSearchQueryBuilder =
+                new NativeSearchQueryBuilder().withQuery(boolQuery);
+        Query query = nativeSearchQueryBuilder.build();
+
+        SearchHits<ElasticCategoria> result = elasticClient.search(query, ElasticCategoria.class);
+
+        return result.getSearchHits().stream().map(SearchHit::getContent).collect(Collectors.toList());
+    }
+
+
+    public ElasticCategoria saveCategoria(ElasticCategoria categoria) {
+        return categoriaRepository.save(categoria);
     }
 
 }

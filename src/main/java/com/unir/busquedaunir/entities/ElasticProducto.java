@@ -36,13 +36,13 @@ public class ElasticProducto {
     @Field(type = FieldType.Integer, name="precio")
     private int precio;
 
-   /* @Field(type = FieldType.Integer, name="estado")
-    private int estado;
+    @Field(type = FieldType.Text, name="estado")
+    private String estado;
 
     @Field(type = FieldType.Integer, name="categoria_id")
     private int categoria_id;
 
-    @Field(type = FieldType.Integer, name="unidad")
-    private int unidad;*/
+    @Field(type = FieldType.Text, name="unidad")
+    private String unidad;
 
 }

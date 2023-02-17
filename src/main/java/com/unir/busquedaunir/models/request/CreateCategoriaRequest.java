@@ -9,14 +9,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateProductRequest {
+public class CreateCategoriaRequest {
 
 	private String nombre;
-	private String codigo;
-	private int cantidad;
-	private int precio;
+	private String descripcion;
 	private String estado;
-	private String unidad;
-	private int categoria_id;
+
 
 }

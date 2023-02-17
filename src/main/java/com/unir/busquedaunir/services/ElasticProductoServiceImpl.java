@@ -2,19 +2,20 @@ package com.unir.busquedaunir.services;
 
 import com.unir.busquedaunir.entities.ElasticProducto;
 import com.unir.busquedaunir.models.request.CreateProductRequest;
-import com.unir.busquedaunir.repositories.ElasticsearchRepository;
+import com.unir.busquedaunir.repositories.ElasticsearchProductoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
 @Service
 public class ElasticProductoServiceImpl implements ElasticProductoService{
 
-    private final ElasticsearchRepository repo;
+    private final ElasticsearchProductoRepository repo;
 
     @Override
     public ElasticProducto getProductById(String productId) {
@@ -38,7 +39,12 @@ public class ElasticProductoServiceImpl implements ElasticProductoService{
 
     @Override
     public List<ElasticProducto> getAvailableProducts() {
-        return repo.getAll();
+        Iterable<ElasticProducto> productos= repo.getAll();
+        List<ElasticProducto> p = new ArrayList<>();
+        for(ElasticProducto producto: productos){
+            p.add(producto);
+        }
+        return p;
     }
 
 

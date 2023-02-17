@@ -20,7 +20,7 @@ public class ElasticProductoController {
 
     private final ElasticProductoService service;
 
-    @GetMapping("/elastic/producto/{productoId}")
+    @GetMapping("/elastic/productos/{productoId}")
     public ResponseEntity<ElasticProducto> getProductoById(@PathVariable String productoId) {
         ElasticProducto producto = service.getProductById(productoId);
         if (producto != null) {
@@ -30,7 +30,7 @@ public class ElasticProductoController {
         }
     }
 
-    @GetMapping("/elastic/producto")
+    @GetMapping("/elastic/productos")
     public ResponseEntity<List<ElasticProducto>> getProductos() {
         List<ElasticProducto> productos = service.getAvailableProducts();
         if (productos != null) {
@@ -40,19 +40,20 @@ public class ElasticProductoController {
         }
     }
 
-    /*@GetMapping("/elastic/producto/match/{value}")
-    public ResponseEntity<ElasticProducto> getProductByName(@PathVariable String value) {
-        ElasticProducto producto = service.getProductByName(value);
+    // codigo exacto
+    @GetMapping("/elastic/producto/match/{value}")
+    public ResponseEntity<List<ElasticProducto>> getProductByName(@PathVariable String value) {
+        List<ElasticProducto> producto = service.searchByCodigo(value);
         if (producto != null) {
             return ResponseEntity.ok(producto);
         } else {
             return ResponseEntity.notFound().build();
         }
-    }*/
+    }
 
 
-
-    @GetMapping("/elastic/producto/search/full-text/{value}")
+    // nombre
+    @GetMapping("/elastic/productos/search/as-you-type/{value}")
     public ResponseEntity<List<ElasticProducto>> searchByName(@PathVariable String value) {
         List<ElasticProducto> producto = service.searchByName(value);
         if (producto != null) {
@@ -63,7 +64,7 @@ public class ElasticProductoController {
     }
 
 
-    @PostMapping("/elastic/products")
+    @PostMapping("/elastic/productos")
     public ResponseEntity<ElasticProducto> getProduct(@RequestBody CreateProductRequest request) {
 
         ElasticProducto createdProduct = service.createProduct(request);
