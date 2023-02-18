@@ -33,7 +33,7 @@ public class ElasticVenta {
     @Field(type = FieldType.Integer, name="total")
     private int total;
 
-    @Field(type = FieldType.Object, name="total")
+    @Field(type = FieldType.Object, name="productos")
     private List<ElasticProducto> productos;
 
 }

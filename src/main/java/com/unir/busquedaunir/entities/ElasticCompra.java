@@ -35,7 +35,7 @@ public class ElasticCompra {
     @Field(type = FieldType.Integer, name="proveedor_id")
     private int proveedor_id;
 
-    @Field(type = FieldType.Object, name="total")
+    @Field(type = FieldType.Object, name="productos")
     private List<ElasticProducto> productos;
 
 
