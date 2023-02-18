@@ -1,7 +1,6 @@
 package com.unir.busquedaunir.entities;
 
-import com.unir.busquedaunir.models.enums.Estado;
-import com.unir.busquedaunir.models.enums.TipoUnidad;
+
 import lombok.*;
 import org.springframework.data.elasticsearch.annotations.*;
 

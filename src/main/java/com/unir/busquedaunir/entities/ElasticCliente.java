@@ -27,10 +27,20 @@ public class ElasticCliente {
             otherFields = @InnerField(suffix = "search", type = FieldType.Search_As_You_Type)
     )
     private String apellido;
+
+    @Field(type = FieldType.Text, name="tipoDocumento")
     private String tipoDocumento;
+
+    @Field(type = FieldType.Text, name="documento")
     private String documento;
+
+    @Field(type = FieldType.Text, name="telefono")
     private String telefono;
+
+    @Field(type = FieldType.Text, name="email")
     private String email;
+
+    @Field(type = FieldType.Text, name="direccion")
     private String direccion;
 
 }
