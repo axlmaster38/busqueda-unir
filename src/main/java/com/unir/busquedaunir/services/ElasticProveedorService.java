@@ -9,9 +9,9 @@ public interface ElasticProveedorService {
 
     ElasticProveedor createProveedor(CreateProveedorRequest request);
     ElasticProveedor getProveedorById(String proveedoroId);
-    List<ElasticProveedor> searchByNombreExacto(String codigo);
-    List<ElasticProveedor> searchByName(String proveedorName);
-    List<ElasticProveedor>  searchByApellido (String apellido);
-    List<ElasticProveedor> searchByApellidoExacto(String codigo);
+    List<ElasticProveedor> searchByNombreExacto(String nombre);
+    List<ElasticProveedor> searchByName(String nombre);
+   // List<ElasticProveedor>  searchByApellido (String apellido);
+    //List<ElasticProveedor> searchByApellidoExacto(String codigo);
     List<ElasticProveedor> getAvailableProveedors();
 }

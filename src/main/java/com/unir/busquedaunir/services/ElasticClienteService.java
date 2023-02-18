@@ -11,7 +11,7 @@ public interface ElasticClienteService {
     ElasticCliente getClienteById(String clienteoId);
     List<ElasticCliente> searchByNombreExacto(String codigo);
     List<ElasticCliente> searchByName(String clienteName);
-    List<ElasticCliente>  searchByApellido (String apellido);
-    List<ElasticCliente> searchByApellidoExacto(String codigo);
+   // List<ElasticCliente>  searchByApellido (String apellido);
+    //List<ElasticCliente> searchByApellidoExacto(String codigo);
     List<ElasticCliente> getAvailableClientes();
 }

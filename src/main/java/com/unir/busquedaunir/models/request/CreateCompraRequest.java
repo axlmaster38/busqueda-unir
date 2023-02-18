@@ -18,7 +18,7 @@ import java.util.List;
 public class CreateCompraRequest {
 
 	private Date fecha;
-	private int numeroFactura;
+	private String numeroFactura;
 	private int total;
 	private int proveedor_id;
 	private List<ElasticProducto> productos;

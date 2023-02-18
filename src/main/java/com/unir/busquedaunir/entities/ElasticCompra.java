@@ -3,7 +3,7 @@ package com.unir.busquedaunir.entities;
 import lombok.*;
 import org.springframework.data.elasticsearch.annotations.*;
 
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
 import java.util.Date;
 import java.util.List;
 
@@ -26,8 +26,8 @@ public class ElasticCompra {
     @MultiField(mainField = @Field(type = FieldType.Keyword, name = "numeroFactura"),
             otherFields = @InnerField(suffix = "search", type = FieldType.Search_As_You_Type)
     )
-    @Field(type = FieldType.Text, name="numeroFactura")
-    private int numeroFactura;
+   // @Field(type = FieldType.Text, name="numeroFactura")
+    private String numeroFactura;
 
     @Field(type = FieldType.Integer, name="total")
     private int total;

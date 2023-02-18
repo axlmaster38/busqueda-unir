@@ -4,8 +4,7 @@ package com.unir.busquedaunir.entities;
 import lombok.*;
 import org.springframework.data.elasticsearch.annotations.*;
 
-import javax.persistence.*;
-
+import org.springframework.data.annotation.Id;
 
 @Document(indexName = "producto", createIndex = true)
 @Getter

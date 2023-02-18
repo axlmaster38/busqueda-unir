@@ -3,7 +3,7 @@ package com.unir.busquedaunir.entities;
 import lombok.*;
 import org.springframework.data.elasticsearch.annotations.*;
 
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
 
 @Document(indexName = "proveedor", createIndex = true)
 @Getter
