@@ -11,6 +11,7 @@ public interface  ElasticProductoService {
     ElasticProducto getProductById(String productoId);
     //ElasticProducto getProductByName(String productName);
     List<ElasticProducto> searchByCodigo(String codigo);
+    List<ElasticProducto> searchByCodigoExacto(String codigo);
     List<ElasticProducto> searchByName(String productName);
     List<ElasticProducto> getAvailableProducts();
 }

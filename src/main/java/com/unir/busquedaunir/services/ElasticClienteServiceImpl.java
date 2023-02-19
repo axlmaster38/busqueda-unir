@@ -55,7 +55,7 @@ public class ElasticClienteServiceImpl implements  ElasticClienteService{
 
     @Override
     public List<ElasticCliente> searchByName(String clienteName) {
-        return null;
+        return repo.searchByName(clienteName);
     }
 
     /*

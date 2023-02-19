@@ -21,6 +21,9 @@ public class ElasticsearchProductoRepository {
     private final String[] nameSearchFields =
             {"nombre.search", "nombre.search._2gram", "nombre.search._3gram"};
 
+    private final String[]  codigoSearchFields=
+            {"codigo.search", "codigo.search._2gram", "codigo.search._3gram"};
+
     private final ElasticProductoRepository productRepository;
     private final ElasticsearchOperations elasticClient;
 
@@ -52,7 +55,7 @@ public class ElasticsearchProductoRepository {
         return result.getSearchHits().stream().map(SearchHit::getContent).collect(Collectors.toList());
     }
 
-    public List<ElasticProducto> searchByCodigo(String codigo) {
+    public List<ElasticProducto> searchByCodigoExacto(String codigo) {
 
         BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
 
@@ -67,6 +70,21 @@ public class ElasticsearchProductoRepository {
         return result.getSearchHits().stream().map(SearchHit::getContent).collect(Collectors.toList());
     }
 
+    public List<ElasticProducto> searchByCodigo(String namePart) {
+
+        BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
+
+        boolQuery.must(QueryBuilders.multiMatchQuery(namePart, codigoSearchFields)
+                .type(MultiMatchQueryBuilder.Type.BOOL_PREFIX));
+
+        NativeSearchQueryBuilder nativeSearchQueryBuilder =
+                new NativeSearchQueryBuilder().withQuery(boolQuery);
+        Query query = nativeSearchQueryBuilder.build();
+
+        SearchHits<ElasticProducto> result = elasticClient.search(query, ElasticProducto.class);
+
+        return result.getSearchHits().stream().map(SearchHit::getContent).collect(Collectors.toList());
+    }
     public ElasticProducto saveProduct(ElasticProducto product) {
         return productRepository.save(product);
     }

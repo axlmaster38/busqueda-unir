@@ -33,6 +33,12 @@ public class ElasticProductoServiceImpl implements ElasticProductoService{
     }
 
     @Override
+    public List<ElasticProducto> searchByCodigoExacto(String codigo) {
+        return repo.searchByCodigoExacto(codigo);
+    }
+
+
+    @Override
     public List<ElasticProducto> searchByName(String productName) {
         return repo.searchByName(productName);
     }

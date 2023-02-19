@@ -16,7 +16,7 @@ public class ElasticProveedorController {
 
     private final ElasticProveedorService service;
 
-    @GetMapping("/elastic/proveedors/{proveedorId}")
+    @GetMapping("/elastic/proveedores/{proveedorId}")
     public ResponseEntity<ElasticProveedor> getProveedoroById(@PathVariable String proveedorId) {
         ElasticProveedor proveedor = service.getProveedorById(proveedorId);
         if (proveedor != null) {
@@ -26,11 +26,11 @@ public class ElasticProveedorController {
         }
     }
 
-    @GetMapping("/elastic/proveedors")
+    @GetMapping("/elastic/proveedores")
     public ResponseEntity<List<ElasticProveedor>> getProveedoros() {
-        List<ElasticProveedor> proveedors = service.getAvailableProveedors();
-        if (proveedors != null) {
-            return ResponseEntity.ok(proveedors);
+        List<ElasticProveedor> proveedores = service.getAvailableProveedors();
+        if (proveedores != null) {
+            return ResponseEntity.ok(proveedores);
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -49,7 +49,7 @@ public class ElasticProveedorController {
 
 
     // nombre
-    @GetMapping("/elastic/proveedors/search/as-you-type/{value}")
+    @GetMapping("/elastic/proveedores/search/as-you-type/{value}")
     public ResponseEntity<List<ElasticProveedor>> searchByName(@PathVariable String value) {
         List<ElasticProveedor> proveedor = service.searchByName(value);
         if (proveedor != null) {
@@ -74,7 +74,7 @@ public class ElasticProveedorController {
 
 
     // apellido
-    @GetMapping("/elastic/proveedors/search/as-you-type/{value}")
+    @GetMapping("/elastic/proveedores/search/as-you-type/{value}")
     public ResponseEntity<List<ElasticProveedor>> searchByApellido(@PathVariable String value) {
         List<ElasticProveedor> proveedor = service.searchByApellido(value);
         if (proveedor != null) {
@@ -85,7 +85,7 @@ public class ElasticProveedorController {
     }
 */
 
-    @PostMapping("/elastic/proveedors")
+    @PostMapping("/elastic/proveedores")
     public ResponseEntity<ElasticProveedor> getProveedor(@RequestBody CreateProveedorRequest request) {
 
         ElasticProveedor createdProveedor = service.createProveedor(request);

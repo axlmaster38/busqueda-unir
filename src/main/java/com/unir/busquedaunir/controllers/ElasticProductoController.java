@@ -42,8 +42,8 @@ public class ElasticProductoController {
 
     // codigo exacto
     @GetMapping("/elastic/producto/match/{value}")
-    public ResponseEntity<List<ElasticProducto>> getProductByName(@PathVariable String value) {
-        List<ElasticProducto> producto = service.searchByCodigo(value);
+    public ResponseEntity<List<ElasticProducto>> getProductByCodigo(@PathVariable String value) {
+        List<ElasticProducto> producto = service.searchByCodigoExacto(value);
         if (producto != null) {
             return ResponseEntity.ok(producto);
         } else {
@@ -56,6 +56,17 @@ public class ElasticProductoController {
     @GetMapping("/elastic/productos/search/as-you-type/{value}")
     public ResponseEntity<List<ElasticProducto>> searchByName(@PathVariable String value) {
         List<ElasticProducto> producto = service.searchByName(value);
+        if (producto != null) {
+            return ResponseEntity.ok(producto);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    // codigo
+    @GetMapping("/elastic/productos/searchcode/{value}")
+    public ResponseEntity<List<ElasticProducto>> searchByCodigo(@PathVariable String value) {
+        List<ElasticProducto> producto = service.searchByCodigo(value);
         if (producto != null) {
             return ResponseEntity.ok(producto);
         } else {

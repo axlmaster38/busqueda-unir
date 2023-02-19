@@ -24,7 +24,9 @@ public class ElasticProducto {
     )
     private String nombre;
 
-    @Field(type = FieldType.Keyword, name = "codigo")
+    @MultiField(mainField = @Field(type= FieldType.Keyword, name="codigo"),
+            otherFields=@InnerField(suffix = "search", type=FieldType.Search_As_You_Type)
+    )
     private String codigo;
 
 
