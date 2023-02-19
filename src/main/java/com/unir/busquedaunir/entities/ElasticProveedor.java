@@ -23,10 +23,8 @@ public class ElasticProveedor {
     )
     private String nombre;
 
-    @MultiField(mainField = @Field(type = FieldType.Keyword, name = "apellido"),
-            otherFields = @InnerField(suffix = "search", type = FieldType.Search_As_You_Type)
-    )
-    private String apellido;
+    @Field(type = FieldType.Text, name="estado")
+    private String estado;
 
     @Field(type = FieldType.Text, name="tipoDocumento")
     private String tipoDocumento;
@@ -43,6 +41,6 @@ public class ElasticProveedor {
     @Field(type = FieldType.Text, name="direccion")
     private String direccion;
 
-    @Field(type = FieldType.Text, name="empresa")
-    private String empresa;
+    @Field(type = FieldType.Text, name="descripcion")
+    private String descripcion;
 }

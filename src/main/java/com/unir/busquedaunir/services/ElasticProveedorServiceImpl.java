@@ -23,19 +23,19 @@ public class ElasticProveedorServiceImpl implements  ElasticProveedorService{
     public ElasticProveedor createProveedor(CreateProveedorRequest request) {
 
         if (request != null && StringUtils.hasLength(request.getNombre())
-                && StringUtils.hasLength(request.getApellido())
+                && StringUtils.hasLength(request.getDescripcion())
         ) {
 
             ElasticProveedor proveedor =
                     ElasticProveedor.builder().id(String.valueOf(request.getNombre().hashCode()))
                             .nombre(request.getNombre())
-                            .apellido(request.getApellido())
+                            .estado(request.getEstado())
                             .tipoDocumento(request.getTipoDocumento())
                             .documento(request.getDocumento())
                             .direccion(request.getDireccion())
                             .telefono(request.getTelefono())
                             .email(request.getEmail())
-                            .empresa(request.getEmpresa())
+                            .descripcion(request.getDescripcion())
                             .build();
 
             return repo.saveProveedor(proveedor);

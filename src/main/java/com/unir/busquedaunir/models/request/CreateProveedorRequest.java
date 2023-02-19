@@ -12,12 +12,12 @@ import lombok.Setter;
 public class CreateProveedorRequest {
 
     private String nombre;
-	private String apellido;
+	private String estado;
 	private String tipoDocumento;
 	private String documento;
 	private String telefono;
 	private String email;
 	private String direccion;
-	private String empresa;
+	private String descripcion;
 
 }
