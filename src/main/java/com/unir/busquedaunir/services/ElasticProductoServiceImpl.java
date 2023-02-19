@@ -63,7 +63,12 @@ public class ElasticProductoServiceImpl implements ElasticProductoService{
 
             ElasticProducto product =
                     ElasticProducto.builder().id(String.valueOf(request.getNombre().hashCode()))
-                            .nombre(request.getNombre()).codigo(request.getCodigo()).precio(request.getPrecio())
+                            .nombre(request.getNombre())
+                            .codigo(request.getCodigo())
+                            .precio(request.getPrecio())
+                            .unidad(request.getUnidad())
+                            .categoria_id(request.getCategoria_id())
+                            .estado(request.getEstado())
                             .cantidad(request.getCantidad()).build();
 
             return repo.saveProduct(product);
