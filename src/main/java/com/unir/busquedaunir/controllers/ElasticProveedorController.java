@@ -12,6 +12,8 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin
+
 public class ElasticProveedorController {
 
     private final ElasticProveedorService service;

@@ -12,6 +12,8 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin
+
 public class ElasticVentaController {
 
     private final ElasticVentaService service;
