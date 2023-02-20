@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CreateProveedorRequest {
 
+	private int id;
     private String nombre;
 	private String estado;
 	private String tipoDocumento;

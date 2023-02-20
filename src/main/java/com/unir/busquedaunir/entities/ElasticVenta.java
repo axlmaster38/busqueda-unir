@@ -15,7 +15,7 @@ import java.util.List;
 public class ElasticVenta {
 
     @Id
-    private String id;
+    private int id;
 
     //@Field(type = FieldType.Date, name = "fecha")
    @Field(type = FieldType.Keyword, name = "fecha")

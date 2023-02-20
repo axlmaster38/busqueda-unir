@@ -27,7 +27,7 @@ public class ElasticClienteServiceImpl implements  ElasticClienteService{
         ) {
 
             ElasticCliente cliente =
-                    ElasticCliente.builder().id(String.valueOf(request.getNombre().hashCode()))
+                    ElasticCliente.builder().id(request.getId())
                             .nombre(request.getNombre())
                             .apellido(request.getApellido())
                             .tipoDocumento(request.getTipoDocumento())

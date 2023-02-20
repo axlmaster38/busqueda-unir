@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CreateCategoriaRequest {
 
+	private int id;
 	private String nombre;
 	private String descripcion;
 	private String estado;

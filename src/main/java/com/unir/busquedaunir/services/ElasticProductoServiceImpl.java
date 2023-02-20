@@ -1,7 +1,9 @@
 package com.unir.busquedaunir.services;
 
+import com.unir.busquedaunir.entities.ElasticCategoria;
 import com.unir.busquedaunir.entities.ElasticProducto;
 import com.unir.busquedaunir.models.request.CreateProductRequest;
+import com.unir.busquedaunir.repositories.ElasticsearchCategoriaRepository;
 import com.unir.busquedaunir.repositories.ElasticsearchProductoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,7 @@ import java.util.List;
 public class ElasticProductoServiceImpl implements ElasticProductoService{
 
     private final ElasticsearchProductoRepository repo;
+    private final ElasticsearchCategoriaRepository repoCategoria;
 
     @Override
     public ElasticProducto getProductById(String productId) {
@@ -62,12 +65,12 @@ public class ElasticProductoServiceImpl implements ElasticProductoService{
                 ) {
 
             ElasticProducto product =
-                    ElasticProducto.builder().id(String.valueOf(request.getNombre().hashCode()))
+                    ElasticProducto.builder().id(request.getId())
                             .nombre(request.getNombre())
                             .codigo(request.getCodigo())
                             .precio(request.getPrecio())
                             .unidad(request.getUnidad())
-                            .categoria_id(request.getCategoria_id())
+                            .categoria(request.getCategoria())
                             .estado(request.getEstado())
                             .cantidad(request.getCantidad()).build();
 

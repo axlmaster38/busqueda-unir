@@ -27,7 +27,7 @@ public class ElasticProveedorServiceImpl implements  ElasticProveedorService{
         ) {
 
             ElasticProveedor proveedor =
-                    ElasticProveedor.builder().id(String.valueOf(request.getNombre().hashCode()))
+                    ElasticProveedor.builder().id(request.getId())
                             .nombre(request.getNombre())
                             .estado(request.getEstado())
                             .tipoDocumento(request.getTipoDocumento())

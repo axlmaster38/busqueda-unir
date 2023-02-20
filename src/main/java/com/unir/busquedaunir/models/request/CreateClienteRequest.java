@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CreateClienteRequest {
 
+	private int id;
 	private String nombre;
 	private String apellido;
 	private String tipoDocumento;

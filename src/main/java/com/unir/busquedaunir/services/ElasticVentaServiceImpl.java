@@ -25,7 +25,7 @@ public class ElasticVentaServiceImpl implements ElasticVentaService {
         ) {
 
             ElasticVenta compra =
-                    ElasticVenta.builder().id(String.valueOf( request.getNumeroFactura().hashCode()))
+                    ElasticVenta.builder().id(request.getId())
                             .fecha(request.getFecha()).numeroFactura(request.getNumeroFactura()).total(request.getTotal())
                             .cliente_id(request.getCliente_id())
                             .productos(request.getProductos()).build();

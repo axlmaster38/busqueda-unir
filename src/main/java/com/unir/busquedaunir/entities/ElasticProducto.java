@@ -17,7 +17,7 @@ public class ElasticProducto {
 
 
     @Id
-    private String id;
+    private int id;
 
     @MultiField(mainField = @Field(type= FieldType.Keyword, name="nombre"),
     otherFields=@InnerField(suffix = "search", type=FieldType.Search_As_You_Type)
@@ -39,8 +39,8 @@ public class ElasticProducto {
     @Field(type = FieldType.Text, name="estado")
     private String estado;
 
-    @Field(type = FieldType.Integer, name="categoria_id")
-    private int categoria_id;
+    @Field(type = FieldType.Object, name="categoria")
+    private ElasticCategoria categoria;
 
     @Field(type = FieldType.Text, name="unidad")
     private String unidad;

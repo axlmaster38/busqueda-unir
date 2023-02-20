@@ -14,7 +14,7 @@ import org.springframework.data.elasticsearch.annotations.*;
 public class ElasticCategoria {
 
   @Id
-  private String id;
+  private int id;
 
   @MultiField(mainField = @Field(type = FieldType.Keyword, name = "nombre"),
       otherFields = @InnerField(suffix = "search", type = FieldType.Search_As_You_Type))

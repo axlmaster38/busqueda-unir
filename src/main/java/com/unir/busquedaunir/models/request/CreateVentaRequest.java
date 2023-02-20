@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 public class CreateVentaRequest {
 
-
+    private int id;
     private String fecha;
     private int cliente_id;
     private String numeroFactura;

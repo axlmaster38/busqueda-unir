@@ -25,7 +25,7 @@ public class ElasticCategoriaServiceImpl implements ElasticCategoriaService{
         ) {
 
             ElasticCategoria categoria =
-                    ElasticCategoria.builder().id(String.valueOf(request.getNombre().hashCode()))
+                    ElasticCategoria.builder().id(request.getId())
                             .nombre(request.getNombre()).descripcion(request.getDescripcion()).estado(request.getEstado())
                             .build();
 

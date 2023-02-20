@@ -17,6 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 public class CreateCompraRequest {
 
+	private int id;
 	private Date fecha;
 	private String numeroFactura;
 	private int total;

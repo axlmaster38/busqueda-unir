@@ -25,7 +25,7 @@ public class ElasticCompraServiceImpl implements  ElasticCompraService{
         ) {
 
             ElasticCompra compra =
-                    ElasticCompra.builder().id(String.valueOf(request.getNumeroFactura()).hashCode())
+                    ElasticCompra.builder().id(request.getId())
                             .fecha(request.getFecha()).numeroFactura(request.getNumeroFactura()).total(request.getTotal())
                             .proveedor_id(request.getProveedor_id())
                             .productos(request.getProductos()).build();
